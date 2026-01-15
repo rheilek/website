@@ -1,0 +1,16 @@
+{
+  "name": "seraheil.de",
+  "short_name": "seraheil",
+  "description": "seraheil website",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#333",
+  "icons": [
+    {
+      "src": "images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

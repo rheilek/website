@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>seraheil.de</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo"><span style="color: #00ADD8">🞊</span> seraheil.de</div>
+                <ul class="nav-links">
+                    <li><a href="#banner"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-640v-80h480v80H240Zm56 416-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></a></li>
+                    <li><a href="#timeline">Projekte</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="banner" class="banner">
+        <div>
+            <img src="images/banner.svg" alt="Banner" class="banner-image">
+            <div class="banner-source">go gopher was designed by <a href="https://reneefrench.blogspot.com/">Renee French</a></div>
+        </div>
+    </section>
+
+    <main>
+        <section class="content-section">
+            <div class="container">
+                <h2>Moin</h2>
+                <p>Ich bin <b>Software-Entwickler</b> und arbeite in einem Unternehmen in der Nähe von <b>Rostock</b>. In den Anfängen meiner Karriere konzentrierte ich mich auf die Programmiersprache Java sowie die modellgetriebene Entwicklung. Heute bin ich <b>Fullstack-Entwickler</b> mit Schwerpunkt auf der <b>Programmiersprache Go</b>.</p>
+                <p>Der Fokus meiner Tätigkeit liegt auf der Entwicklung einer <b>Plattform zur Provisionierung von Softwarelösungen</b> für die Versorgungsbranche. Diese Plattform standardisiert alle Prozesse rund um die Installation, Aktualisierung, Authentifizierung, Schnittstellen sowie Wartung und Pflege.</p>
+                <p>Immer wieder stelle ich fest: <i>„Das habe ich doch irgendwann schon einmal gemacht.”</i> Diese Gedanken motivieren mich, meine bisherigen Erfahrungen zu sammeln und festzuhalten. Da viele Projekte aus beruflichen Stationen oder dem Studium stammen, sind sie nur grob skizziert.</p>
+            </div>
+        </section>
+
+        <section id="timeline" class="content-section">
+            <div class="container">
+                <h2>Projekte </h2>
+                <div class="timeline-container">
+                    <div class="timeline-events">
+                        <div class="timeline-event">
+                            <div class="event-content">
+                                <h3><a href="https://github.com/rheilek">github.com/rheilek</a></h3>
+                                <p>Hier sind meine öffentlichen Projekte zu finden.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Jun.</span><br>2025</div>
+                            <div class="event-content">
+                                <h3>Agent - BDEW und BSI-Konformität</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Eine neue Richtlinie in der Versorgungsbranche erfordert die Kommunikation verschiedener Betriebe über das WAN (Internet) mit Client-Zertifikaten.</p>
+                                    </summary>
+                                    <p class="event-description">Umsetzung der Security- und Key-Lifecycle-Policy. SNI-Routing und HAProxy als DMZ.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>golang</b> | <b>haproxy</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Nov.</span><br>2023</div>
+                            <div class="event-content">
+                                <h3>Agent - Passwort-Manager für die Datenbank</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Um sensible Daten aus der Datenbank in einen Passwort-Manager zu migrieren, wurde eine Echtzeitkommunikation zwischen Datenbank und Middleware entwickelt.</p>
+                                    </summary>
+                                    <p class="event-description">Der Datenbankcode kann über diese Kommunikation direkt Passwörter aus dem Passwort-Manager der Middleware abfragen, um diese zur Verschlüsselung/Entschlüsselung oder Signierung/Verifizierung zu nutzen.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>golang</b> | <b>go-ora</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Nov.</span><br>2023</div>
+                            <div class="event-content">
+                                <h3>Migration von Oracle Forms/Reports</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Migration einer bestehenden Applikation auf eine neuere Oracle-Version.</p>
+                                    </summary>
+                                    <p class="event-description">Rund 4000 Artefakte mussten neu kompiliert werden. Dafür wurden Installationsroutinen und Kompilierungswerkzeuge erstellt.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>gosec</b> | <b>go staticcheck</b> | <b>govulncheck</b> | <b>java-semgrep</b> | <b>owasp-dependency-check</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Apr.</span><br>2021</div>
+                            <div class="event-content">
+                                <h3>Agent - DAST und SAST</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">CI/CD-Prozesse zum zyklischen Testen und Dokumentieren der Anwendungssicherheit.</p>
+                                    </summary>
+                                    <p class="event-description">Neben der statischen Code-Analyse inkl. Abhängigkeitenanalyse, lag der Fokus auf die HTTP-APIs (REST und SOAP) sowie die Authentifizierung.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>gosec</b> | <b>go staticcheck</b> | <b>govulncheck</b> | <b>java-semgrep</b> | <b>owasp-dependency-check</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Apr.</span><br>2021</div>
+                            <div class="event-content">
+                                <h3>Agent - Dynamische Benutzer und Passwörter</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Umsetzung des Prinzips der geringsten Rechte durch temporäres Generieren von Service-Accounts.</p>
+                                    </summary>
+                                    <p class="event-description">Die Service-Accounts erhalten minimale Rechte, generierte Passwörter und dazu die Option zur Rollierung.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>golang</b> </p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Apr.</span><br>2021</div>
+                            <div class="event-content">
+                                <h3>Agent - Passwort-Manager</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Sichere Passwortverwaltung und Authentifizierung inspiriert von HashiCorp Vault.</p>
+                                    </summary>
+                                    <p class="event-description">Einführung eines Master-Passwortes. Sichere Aufbewahrung von sensiblen Daten durch Verschlüsselung mittels Data-Encryption-Key (DEK) und Key-Encryption-Key (KEK). Generierung von Client-Zertifikaten für den sicheren Remote-Zugriff auf einzelne Buckets des Passwort-Managers.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>golang</b> </p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Aug.</span><br>2019</div>
+                            <div class="event-content">
+                                <h3>Agent - Dokumentation und Schulungsumgebung</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Erstellen einer TeX-Dokumentation und Docker-Umgebung zur Schulung von Administratoren.</p>
+                                    </summary>
+                                    <p class="event-description">Docker Multi-Stage-Build um unterschiedliche Zustände in der Schulungsumgebung automatisiert erstellen zu können. Eigenes Docker-Netzwerk je Cluster mit Bridge zum Host.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>tex</b> | <b>docker</b> | <b>docker-compose</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Jan.</span><br>2019</div>
+                            <div class="event-content">
+                                <h3>Agent - Signierung und Packages</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Signierung der Binaries. Unter Linux Auslieferung und Aktualisierung mittels Packages.</p>
+                                    </summary>
+                                    <p class="event-description">CI/CD-Prozess zum Signieren und Erzeugen von RPM-Paketen.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>makefile</b> | <b>rpmbuild</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Apr.</span><br>2018</div>
+                            <div class="event-content">
+                                <h3>Agent - Reverse-Invocation</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Eine DMZ hat im Idealfall keinerlei Möglichkeit, eine Verbindung in das interne/lokale Netz aufzubauen. Um dennoch Daten und Services des internen/lokalen Netzes freizugeben, wurde das Modul Reverse-Invocation entwickelt.</p>
+                                    </summary>
+                                    <p class="event-description">Der Mechanismus basiert auf einer langlaufenden Verbindung, die vom internen Netz erstellt wird. Die Weiterleitung aus der DMZ ins interne Netz erfolgt dann auf dieser Verbindung mittels Multiplexing. Angreifern ist es daher nicht möglich, neue Verbindungen zu erstellen sowie das Multiplexing-Protokoll nachzubilden.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>golang</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Jul.</span><br>2017</div>
+                            <div class="event-content">
+                                <h3>Agent - OAuth2/OIDC</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Der Agent als HTTP-Kommunikationszentrale wurde um OAuth2 zur Autorisierung und OpenID Connect zur Authentifizierung erweitert.</p>
+                                    </summary>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>golang</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Mar.</span><br>2017</div>
+                            <div class="event-content">
+                                <h3>Agent - Gossip und Monitoring</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Clusterweites Monitoring und Visualisierung der Daten mittels D3-Charts.</p>
+                                    </summary>
+                                    <p class="event-description">Der Agent übernimmt die "nervigen" Standardroutinen und dient gleichzeitig als Ein- und Austrittspunkt jeglicher HTTP-Verbindungen.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>golang</b> | <b>d3.js</b> | <b>gossip</b> (based on apache cassandra protocol)</p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Jun.</span><br>2015</div>
+                            <div class="event-content">
+                                <h3>Agent - Virtueller Administrator</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Automatisierte Installation, Aktualisierung und Monitoring von Systemen zum Betrieb einer Softwarelösung für die Versorgungsbranche.</p>
+                                    </summary>
+                                    <p class="event-description">Der Agent übernimmt die "nervigen" Standardroutinen und dient gleichzeitig als Ein- und Austrittspunkt jeglicher HTTP-Verbindungen.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>golang</b> | <b>java</b> | <b>html</b> | <b>js</b> | <b>css</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Aug.</span><br>2014</div>
+                            <div class="event-content">
+                                <h3>JEE Architektur für PL/SQL Applikation</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Konzept und PoC (Proof of Concept) einer JEE-Architektur zur sanften Migration einer bestehenden Oracle Forms/Reports Applikation mit einem hohen Maß an PL/SQL-Geschäftslogik in der Datenbank.</p>
+                                    </summary>
+                                    <p class="event-description">Das primäre Ziel ist die Neugestaltung der Benutzeroberfläche. Weiterhin besteht der Wunsch neue oder geänderte Geschäftslogik in die Middleware zu verlagern.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java ee</b> | <b>websockets</b> | <b>json</b> | <b>pl/sql</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Feb.</span><br>2014</div>
+                            <div class="event-content">
+                                <h3>Middleware-Installer und -Cloning</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Bereitstellung von Werkzeugen zur kundenorientierten Installation und Cloning einer komplexen Middleware-Infrastruktur.</p>
+                                    </summary>
+                                    <p class="event-description">Erstellen und Konfigurieren von DataSources, SecurityProvider, Deployments und weiteren applikationsspezifischen Voraussetzungen.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>python</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Mai</span><br>2012</div>
+                            <div class="event-content">
+                                <h3>Modellgetriebene Entwicklungsumgebung</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Entwicklungsumgebung zur Modellierung und Generierung von komplexen Software-Systemen (ERP). </p>
+                                    </summary>
+                                    <p class="event-description">Bestehend aus einem Basis-Framework, verschiedenen Modell-Editoren und Generatoren zur Erzeugung des Infrastrukturcodes. Die primären Ziele sind die Steigerung der Entwicklungseffizienz und der langjährige Investitionsschutz durch plattformunabhängige Modelle.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>eclipse</b> | <b>osgi</b> | <b>xtext</b> | <b>gmf</b> | <b>riena</b> | <b>hibernate</b> | <b>spring</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Sept.</span><br>2011</div>
+                            <div class="event-content">
+                                <h3>Applet-Integration</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Integration eines bestehenden Java Applets in eine Java Fat-Client Anwendung.  </p>
+                                    </summary>
+                                    <p class="event-description">Simulation der Applet-Umgebung und Bereitstellung separater Kontexte zur Ereignisverarbeitung je Instanz.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>applet</b> | <b>swt</b> | <b>swing</b> | <b>awt</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Jun.</span><br>2009</div>
+                            <div class="event-content">
+                                <h3>Workflow-Engine</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Interpretierung von Workflowmodellen und Steuerung der angezeigten Views einer Riena-Applikation (RCP). </p>
+                                    </summary>
+                                    <p class="event-description">Zur Visualisierung des aktuellen Workflows wird die Position des Benutzers in einem Train dargestellt.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>eclipse</b> | <b>osgi</b> | <b>riena</b> | <b>emf</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Apr.</span><br>2009</div>
+                            <div class="event-content">
+                                <h3>Master-Thesis</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Entwicklung eines Konzepts zur Rücktransformation plattformspezifischer Modelle zu plattformunabhängigen Modellen am Beispiel einer Geschäftsanwendung.</p>
+                                    </summary>
+                                    <p class="event-description">Das primäre Ziel dieser Arbeit war die Entwicklung einer Methodologie und prototypische Umsetzung, um Modelle aus Refactoring-Prozessen zu plattformunabhängigen Modellen zu transformieren. Demzufolge wurde eine Umkehrung der bekannten Vorwärtstransformation aus der modellgetriebenen Software-Entwicklung (z. B. MDA) gesucht, die zur Software-Modernisierung eingesetzt werden soll. Im Hauptteil der Arbeit werden bestehende Ansätze evaluiert und ein Konzept abgeleitet, welches im Anschluss mithilfe eines praktischen Beispiels geprüft wird.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>eclipse</b> | <b>openArchitectureWare</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Sept.</span><br>2008</div>
+                            <div class="event-content">
+                                <h3>MobileSOA</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Zugriff auf eine SOA-Infrastruktur über ein mobiles Endgerät. </p>
+                                    </summary>
+                                    <p class="event-description">Dabei wurden die Verfahren REST und SOAP implementiert. Zusätzlich wurde die Übertragung per HTTPS verschlüsselt.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java me</b> | <b>wtk</b> | <b>glassfish</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Jul.</span><br>2008</div>
+                            <div class="event-content">
+                                <h3>Network Traffic Analyzer</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Sniffer und Capture Tool zum Aufzeichnen von HTML-, FTP- und Mail-Verkehr von einer Netzwerkschnittstelle (Studienarbeit).</p>
+                                    </summary>
+                                    <p class="event-description">
+                                        <img src="images/nta/nta_main.jpg" class="gallery-image" alt="NTA Main">
+                                        <img src="images/nta/starthttp.jpg" class="gallery-image" alt="Start HTTP">
+                                        <img src="images/nta/nta_http.jpg" class="gallery-image" alt="NTA HTTP">
+                                    </p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>jpcap</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">Sept.</span><br>2007</div>
+                            <div class="event-content">
+                                <h3>Bachelor-Thesis</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Entwurf und Implementierung eines grafischen Editors zur Modellierung datenbankgestützter Softwareartefakte.</p>
+                                    </summary>
+                                    <p class="event-description">Das Ziel war die Eigenentwicklung eines grafischen Entity-Relationship-Modellierungs- und -Generierungswerkzeugs zur Ablösung eines veralteten Editors.</p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>eclipse</b> | <b>gmf</b> | <b>emf</b></p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="event-year"><span class="event-month">März</span><br>2007</div>
+                            <div class="event-content">
+                                <h3>File-Explorer</h3>
+                                <details>
+                                    <summary>
+                                        <p class="event-title">Einfacher Dateimanager nach dem Vorbild vom Norton, Total oder Gnome Commander mit dem Versuch die Zeit von Dateioperationen exakt zu bestimmen.</p>
+                                    </summary>
+                                   <p class="event-description">
+                                        <img src="images/fe/fileexplorer.jpg" class="gallery-image" alt="File Explorer">
+                                    </p>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>eclipse rcp</b></p>
+                                </details>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="kontakt" class="content-section">
+            <div class="container">
+                <h2>Kontakt</h2>
+                
+                <div class="impressum">
+                    <h3>Angaben gemäß § 5 TMG</h3>
+                    <p>
+                        Ra<span>[0x6C,0x66] </span>Heil<span>[0x65,0x6B]</span><br>
+                        F<span>[0x65,0x6C]</span>dstr<span>[0x2E]</span> 48<br>
+                        18<span>[0x30]</span>57 Rostock
+                    </p>
+                    <p>
+                        contact <span>[0x40]</span> seraheil <span>[0x2E]</span> de
+                    </p>
+                    <p>
+                        <strong>Haftung für Inhalte:</strong> Die Inhalte wurden mit größter Sorgfalt erstellt. 
+                        Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
+                    </p>
+                    <p>
+                        <strong>Haftung für Links:</strong> Unser Angebot enthält Links zu externen Webseiten Dritter, 
+                        auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets 
+                        der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+                    </p>
+                    <p><i>Zum Schutz sind ausgewählte Zeichen hexadezimal dargestellt.</i></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026<span class="separator">-</span><span>seraheil.de</span><span class="separator">-</span><a class="profile-link" href="#" id="xing-link">XING</a></p>
+        </div>
+    </footer>
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="lightbox-nav">
+            <button class="lightbox-prev">&lsaquo;</button>
+            <button class="lightbox-next">&rsaquo;</button>
+        </div>
+    </div>
+    <script>
+        // XING-Link Verschleierung gegen Spam-Bots
+        document.getElementById('xing-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = atob('aHR0cHM6Ly93d3cueGluZy5jb20vcHJvZmlsZS9SYWxmX0hlaWxlaw==');
+        });
+        
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const galleryImages = document.querySelectorAll('.gallery-image');
+        let currentIndex = 0;
+
+        galleryImages.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                currentIndex = index;
+                showLightbox(img.src);
+            });
+        });
+
+        function showLightbox(src) {
+            lightboxImg.src = src;
+            lightbox.style.display = 'flex';
+        }
+
+        document.querySelector('.lightbox-close').addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        document.querySelector('.lightbox-prev').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+            lightboxImg.src = galleryImages[currentIndex].src;
+        });
+
+        document.querySelector('.lightbox-next').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % galleryImages.length;
+            lightboxImg.src = galleryImages[currentIndex].src;
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
