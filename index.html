@@ -55,25 +55,33 @@
                         <div class="timeline-event">
                             <div class="event-year"><span class="event-month">Jun.</span><br>2025</div>
                             <div class="event-content">
-                                <h3>Agent - BDEW und BSI-Konformität</h3>
+                                <h3>Middleware-Agent - BDEW und BSI-Konformität</h3>
                                 <details>
                                     <summary>
-                                        <p class="event-title">Eine neue Richtlinie in der Versorgungsbranche erfordert die Kommunikation verschiedener Betriebe über das WAN (Internet) mit Client-Zertifikaten.</p>
+                                        <p class="event-title">Eine neue Richtlinie in der Versorgungsbranche erfordert die Kommunikation verschiedener Betriebe über das WAN (Internet) mit Client-Zertifikaten</p>
                                     </summary>
-                                    <p class="event-description">Umsetzung der Security- und Key-Lifecycle-Policy. SNI-Routing und HAProxy als DMZ.</p>
-                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>golang</b> | <b>haproxy</b></p>
+                                    <hr>
+                                    <p class="event-description">Maßgebend waren die Security- und Key-Lifecycle-Policy des BSI. Diese haben die sichere Zufallszahlengenerierung, diverse TLS-Standards und die sichere Aufbewahrung der Private Keys definiert. Dies hat erfordert, dass ein SNI-based-Routing implementiert werden musste, um die Zertifikate nicht im Cluster verteilen zu müssen (Dateisystem).</p>
+                                    <p class="event-description">Für die sichere Zufallszahlengenerierung wurde der Linux-Kernel evaluiert, genutzt und ggf. mit weiteren Entropiequellen angereichert. Unter Windows wurde mit JNI ein Funktion aus dem Windows-System angebunden. Weiterhin wurde HAProxy als weitere Layer-4 Multiplexer-Komponente eingesetzt und für eine hohe 6-stellige Anzahl an Request konfiguriert und getestet.</p>
+                                    <p class="event-description">Weiterhin hat der BDEW die 24/7-Verfügbarkeit gefordert. Um die betroffenen Komponenten inkrementell aktualisieren zu können, wurde ein Leader-Election Mechanismus im Cluster implementiert. Der Leader entscheidet über das Routing der Requests und welcher Knoten eine Aktualisierung vornehmen kann (Rolling-Upgrade).</p>
+                                    <hr>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>golang</b> | <b>java</b> | <b>haproxy</b></p>
                                 </details>
                             </div>
                         </div>
                         <div class="timeline-event">
                             <div class="event-year"><span class="event-month">Nov.</span><br>2023</div>
                             <div class="event-content">
-                                <h3>Agent - Passwort-Manager für die Datenbank</h3>
+                                <h3>Middleware-Agent - Passwort-Manager für die Datenbank</h3>
                                 <details>
                                     <summary>
-                                        <p class="event-title">Um sensible Daten aus der Datenbank in einen Passwort-Manager zu migrieren, wurde eine Echtzeitkommunikation zwischen Datenbank und Middleware entwickelt.</p>
+                                        <p class="event-title">Das Ziel war den bereits existierende Passwort-Manager der Middleware zu nutzen.</p>
                                     </summary>
-                                    <p class="event-description">Der Datenbankcode kann über diese Kommunikation direkt Passwörter aus dem Passwort-Manager der Middleware abfragen, um diese zur Verschlüsselung/Entschlüsselung oder Signierung/Verifizierung zu nutzen.</p>
+                                    <hr>
+                                        <p class="event-description">Dazu wurde eine Echtzeitkommunikation zwischen Datenbank und Middleware etabliert. Der Datenbankcode kann über diese Kommunikation direkt sensible Daten aus dem Passwort-Manager der Middleware abfragen, um diese zur Verschlüsselung/Entschlüsselung oder Signierung/Verifizierung zu nutzen. Technisch basiert die Kommunikation auf einer Pipe. Die Datenbank kann über die Pipe direkt mit dem Passwort-Manager kommunizieren. Aus Sicht der Middleware ist es eine langlaufende Datenbankverbindung. Diese wurde mit go-ora Treiber realisiert. Die langlaufenden Verbindungen erfordern ein effizientes Ressourcenmanagement und Timeoutbehandlung. Die Fehler und Probleme im Treiber wurden durch <a href="https://github.com/sijms/go-ora/pulls?q=is%3Apr+is%3Aclosed+author%3Arheilek">Pull-Requests</a> optimiert und wurden dankbar angenommen (siehe <a href="https://github.com/sijms/go-ora" class="monospace">README.MD</a>).</p>
+                                        <pre>### version 2.8.8
+* introduce new connection break using go-routines thanks to @rheilek</pre>
+                                    <hr>                                   
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>golang</b> | <b>go-ora</b></p>
                                 </details>
                             </div>
@@ -86,33 +94,39 @@
                                     <summary>
                                         <p class="event-title">Migration einer bestehenden Applikation auf eine neuere Oracle-Version.</p>
                                     </summary>
-                                    <p class="event-description">Rund 4000 Artefakte mussten neu kompiliert werden. Dafür wurden Installationsroutinen und Kompilierungswerkzeuge erstellt.</p>
-                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>gosec</b> | <b>go staticcheck</b> | <b>govulncheck</b> | <b>java-semgrep</b> | <b>owasp-dependency-check</b></p>
+                                    <hr>
+                                    <p class="event-description">Rund 4000 Artefakte mussten neu kompiliert werden. Dafür wurden Installationsroutinen und Kompilierungswerkzeuge erstellt. Das Upgrade einer Kundenumgebung ist nach einigen notwendigen Vorarbeiten (u.a. neue Datenbank) dann in wenigen Stunden erledigt.</p>
+                                    <hr>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>oracle</b> | <b>java</b> | <b>agent</b></p>
                                 </details>
                             </div>
                         </div>
                         <div class="timeline-event">
                             <div class="event-year"><span class="event-month">Apr.</span><br>2021</div>
                             <div class="event-content">
-                                <h3>Agent - DAST und SAST</h3>
+                                <h3>DAST und SAST für Webservices</h3>
                                 <details>
                                     <summary>
-                                        <p class="event-title">CI/CD-Prozesse zum zyklischen Testen und Dokumentieren der Anwendungssicherheit.</p>
+                                        <p class="event-title">CI/CD-Prozesse zum zyklischen Testen und Dokumentieren der Webservices.</p>
                                     </summary>
-                                    <p class="event-description">Neben der statischen Code-Analyse inkl. Abhängigkeitenanalyse, lag der Fokus auf die HTTP-APIs (REST und SOAP) sowie die Authentifizierung.</p>
-                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>gosec</b> | <b>go staticcheck</b> | <b>govulncheck</b> | <b>java-semgrep</b> | <b>owasp-dependency-check</b></p>
+                                    <hr>
+                                    <p class="event-description">Die statische Code-Analyse beinhaltet zugleich eine Abhängigkeitenanalyse. Die Tests waren Teil eines internen Penetrationstests und dienen zukünftig zum Nachweis für externe Penetrationstests und zur Auditierung.</p>
+                                    <hr>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>gosec</b> | <b>go staticcheck</b> | <b>govulncheck</b> | <b>java-semgrep</b> | <b>owasp-zap</b> | <b>owasp-dependency-check</b></p>
                                 </details>
                             </div>
                         </div>
                         <div class="timeline-event">
                             <div class="event-year"><span class="event-month">Apr.</span><br>2021</div>
                             <div class="event-content">
-                                <h3>Agent - Dynamische Benutzer und Passwörter</h3>
+                                <h3>Middleware-Agent - Dynamic Credentials</h3>
                                 <details>
                                     <summary>
-                                        <p class="event-title">Umsetzung des Prinzips der geringsten Rechte durch temporäres Generieren von Service-Accounts.</p>
+                                        <p class="event-title">Einführung von dynamischen Service-Accounts für alle Middleware-Services.</p>
                                     </summary>
-                                    <p class="event-description">Die Service-Accounts erhalten minimale Rechte, generierte Passwörter und dazu die Option zur Rollierung.</p>
+                                    <hr>
+                                    <p class="event-description">Die Service-Accounts erhalten minimale Rechte, generierte Passwörter und dazu die Option zur Rollierung. Anschließend wurden alle Services angepasst, die Passwörter in Konfigurationsdateien oder Umgebungsvariablen gespeichert hatten und der Zugriff über den Passwort-Manager implementiert. Das Risiko des Auslesen von Passwörter wurde dadurch signifikant reduziert.</p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>golang</b> </p>
                                 </details>
                             </div>
@@ -120,12 +134,14 @@
                         <div class="timeline-event">
                             <div class="event-year"><span class="event-month">Apr.</span><br>2021</div>
                             <div class="event-content">
-                                <h3>Agent - Passwort-Manager</h3>
+                                <h3>Middleware-Agent - Passwort-Manager</h3>
                                 <details>
                                     <summary>
                                         <p class="event-title">Sichere Passwortverwaltung und Authentifizierung inspiriert von HashiCorp Vault.</p>
                                     </summary>
-                                    <p class="event-description">Einführung eines Master-Passwortes. Sichere Aufbewahrung von sensiblen Daten durch Verschlüsselung mittels Data-Encryption-Key (DEK) und Key-Encryption-Key (KEK). Generierung von Client-Zertifikaten für den sicheren Remote-Zugriff auf einzelne Buckets des Passwort-Managers.</p>
+                                    <hr>
+                                    <p class="event-description">Einführung eines Passwort-Tresors mit Master-Passwort. Sichere Aufbewahrung von sensiblen Daten durch Verschlüsselung mittels Data-Encryption-Key (DEK) und Key-Encryption-Key (KEK). Generierung von Client-Zertifikaten für den sicheren Zugriff auf einzelne Buckets des Passwort-Managers von Services. Erstellen einer API und Bibliotheken zum einfachen Zugriff für die Programmiersprache Java und Go.</p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>golang</b> </p>
                                 </details>
                             </div>
@@ -133,12 +149,14 @@
                         <div class="timeline-event">
                             <div class="event-year"><span class="event-month">Aug.</span><br>2019</div>
                             <div class="event-content">
-                                <h3>Agent - Dokumentation und Schulungsumgebung</h3>
+                                <h3>Middleware-Agent - Dokumentation und Schulungsumgebung</h3>
                                 <details>
                                     <summary>
                                         <p class="event-title">Erstellen einer TeX-Dokumentation und Docker-Umgebung zur Schulung von Administratoren.</p>
                                     </summary>
-                                    <p class="event-description">Docker Multi-Stage-Build um unterschiedliche Zustände in der Schulungsumgebung automatisiert erstellen zu können. Eigenes Docker-Netzwerk je Cluster mit Bridge zum Host.</p>
+                                    <hr>
+                                    <p class="event-description">Eine rund 70-seitige Dokumentation zur Middleware-Installation beginnend bei den Betriebssystemvoraussetzungen bis hin zur Wartung und Pflege der Applikation. Parallel dazu wurde eine Docker-Umgebung zur Schulung aufgebaut. Die einzelnen Etappen während einer Schulung können aufgrund eines Multi-Stage Docker-Build flexibel ausgewählt werden. Jede Umgebung erhält ein eigenes Docker-Netzwerk mit Bridge zum Host, um die Applikation später auf dem Host direkt testen zu können.</p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>tex</b> | <b>docker</b> | <b>docker-compose</b></p>
                                 </details>
                             </div>
@@ -146,12 +164,15 @@
                         <div class="timeline-event">
                             <div class="event-year"><span class="event-month">Jan.</span><br>2019</div>
                             <div class="event-content">
-                                <h3>Agent - Signierung und Packages</h3>
+                                <h3>Middleware-Agent - Code-Signierung und Linux-Paketverwaltung.</h3>
                                 <details>
                                     <summary>
-                                        <p class="event-title">Signierung der Binaries. Unter Linux Auslieferung und Aktualisierung mittels Packages.</p>
+                                        <p class="event-title">CI/CD-Prozess zum Signieren und Erzeugen von RPM-Paketen.</p>
                                     </summary>
-                                    <p class="event-description">CI/CD-Prozess zum Signieren und Erzeugen von RPM-Paketen.</p>
+                                    <hr>
+                                    <p class="event-description">Die Signierung des Codes war ein wichtiger Schritt, um die Integrität und Authentizität der Software gegenüber Schwachstellen-Scanner sicherzustellen.</p>
+                                    <p class="event-description">Die Erstellung von RPM-Paketen ermöglicht eine einfache Installation und Aktualisierung der Software auf Linux-Systemen.</p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>makefile</b> | <b>rpmbuild</b></p>
                                 </details>
                             </div>
@@ -159,12 +180,14 @@
                         <div class="timeline-event">
                             <div class="event-year"><span class="event-month">Apr.</span><br>2018</div>
                             <div class="event-content">
-                                <h3>Agent - Reverse-Invocation</h3>
+                                <h3>Middleware-Agent - Reverse-Invocation</h3>
                                 <details>
                                     <summary>
-                                        <p class="event-title">Eine DMZ hat im Idealfall keinerlei Möglichkeit, eine Verbindung in das interne/lokale Netz aufzubauen. Um dennoch Daten und Services des internen/lokalen Netzes freizugeben, wurde das Modul Reverse-Invocation entwickelt.</p>
+                                        <p class="event-title">Das Ziel war die bidirektionale Kommunikation zu vermeiden, wenn der Agent in einer DMZ installiert ist.</p>
                                     </summary>
-                                    <p class="event-description">Der Mechanismus basiert auf einer langlaufenden Verbindung, die vom internen Netz erstellt wird. Die Weiterleitung aus der DMZ ins interne Netz erfolgt dann auf dieser Verbindung mittels Multiplexing. Angreifern ist es daher nicht möglich, neue Verbindungen zu erstellen sowie das Multiplexing-Protokoll nachzubilden.</p>
+                                    <hr>
+                                    <p class="event-description">Eine DMZ sollte im Idealfall keinerlei Möglichkeit haben, eine Verbindung in das interne/lokale Netz (LAN) aufzubauen, da dieser Zugriffspfad von möglichen Angreifern ausgenutzt werden kann. Die Lösung war die Implementierung der Reverse-Invocation. Der Mechanismus basiert auf einer langlaufenden Verbindung, die vom internen Netz erstellt wird. Die Weiterleitung aus der DMZ ins interne Netz erfolgt dann auf dieser Verbindung mittels Multiplexing. Einem Angreifer ist es daher nicht möglich, direkt eine Verbindung ins LAN zu erstellen. Um einen Request ins interne Netz weiterzuleiten, müsste der Angreifer Zugriff auf eine vorhandene Verbindung haben und das Multiplexing-Protokoll nachbilden, was die Sache stark verkompliziert und somit das Risiko minimiert.</p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>golang</b></p>
                                 </details>
                             </div>
@@ -172,11 +195,14 @@
                         <div class="timeline-event">
                             <div class="event-year"><span class="event-month">Jul.</span><br>2017</div>
                             <div class="event-content">
-                                <h3>Agent - OAuth2/OIDC</h3>
+                                <h3>Middleware-Agent - Authorizationserver</h3>
                                 <details>
                                     <summary>
-                                        <p class="event-title">Der Agent als HTTP-Kommunikationszentrale wurde um OAuth2 zur Autorisierung und OpenID Connect zur Authentifizierung erweitert.</p>
+                                        <p class="event-title">Der Agent als HTTP-Kommunikationszentrale wurde um einen Authorizationsserver erweitert.</p>
                                     </summary>
+                                    <hr>
+                                    <p class="event-description">Der Authorizationserver implementiert die Protokolle OAuth2 und OIDC (OpenID Connect) zur Authentifizierung und Autorisierung von Clients. Er unterstützt die Grant-Types authorization_code, client_credentials und password (für Legacy-Systeme). Der Authorizationserver wurde als Modul entwickelt und kommt in weiteren Eigenentwicklungen zum Einsatz. Weiterhin wurde zu Kompatibilitätszwecken eine automatische Übersetzung von Basic-Authentication zu client_credentials implementiert.</p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>golang</b></p>
                                 </details>
                             </div>
@@ -184,25 +210,31 @@
                         <div class="timeline-event">
                             <div class="event-year"><span class="event-month">Mar.</span><br>2017</div>
                             <div class="event-content">
-                                <h3>Agent - Gossip und Monitoring</h3>
+                                <h3>Middleware-Agent - Gossip und Monitoring</h3>
                                 <details>
                                     <summary>
-                                        <p class="event-title">Clusterweites Monitoring und Visualisierung der Daten mittels D3-Charts.</p>
+                                        <p class="event-title">Clusterweites Monitoring und Visualisierung der Daten.</p>
                                     </summary>
-                                    <p class="event-description">Der Agent übernimmt die "nervigen" Standardroutinen und dient gleichzeitig als Ein- und Austrittspunkt jeglicher HTTP-Verbindungen.</p>
-                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>golang</b> | <b>d3.js</b> | <b>gossip</b> (based on apache cassandra protocol)</p>
+                                    <hr>
+                                    <p class="event-description">Die Daten aus dem Monitoring werden zusammengefasst und über ein Gossip-Protokoll im Cluster verteilt. Damit kennt jeder Knoten im Cluster den Zustand der Nachbarn. Diese Information kann u.a. zum Routing genutzt werden. Weiterhin werden diese Daten in der Weboberfläche mittels d3.js visualisiert. Als Vorlage diente das Gossip-Verfahren  von Apache Cassandra.</p>
+                                    <hr>
+                                    <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>golang</b> | <b>d3.js</b></p>
                                 </details>
                             </div>
                         </div>
                         <div class="timeline-event">
                             <div class="event-year"><span class="event-month">Jun.</span><br>2015</div>
                             <div class="event-content">
-                                <h3>Agent - Virtueller Administrator</h3>
+                                <h3>Middleware-Agent - Virtueller Administrator</h3>
                                 <details>
                                     <summary>
-                                        <p class="event-title">Automatisierte Installation, Aktualisierung und Monitoring von Systemen zum Betrieb einer Softwarelösung für die Versorgungsbranche.</p>
+                                        <p class="event-title">Installation, Aktualisierung und Monitoring von Systemen zum Betrieb von Softwarelösungen für die Versorgungsbranche.</p>
                                     </summary>
-                                    <p class="event-description">Der Agent übernimmt die "nervigen" Standardroutinen und dient gleichzeitig als Ein- und Austrittspunkt jeglicher HTTP-Verbindungen.</p>
+                                    <hr>
+                                    <p class="event-description">Bislang wurde alle Systeme immer manuell installiert und aktualisiert. Der Agent übernimmt diese "nervigen" Prozesse und standardisiert diese. Er wird als Service bzw. Dienst auf dem System einmalig eingerichtet und verfügt über einen Auto-Update-Mechanismus.</p>
+                                    <p>Mehrere Systeme mit Agenten können zum einem Cluster verbunden werden. Die Agenten kommunizieren automatisch untereinander und es gibt ein zentrale Weboberfläche zum Management des Clusters. Jeder Agent dient gleichzeitig als Ein- und Austrittspunkt jeglicher HTTP-Verbindungen inkl. eines Lastverteilungsmechanismus für eingehende HTTP-Requests.</p>
+                                    <p>Der Anwendungsadministrator kann über die bereitgestellte Weboberfläche und Kommandozeile alle notwendigen Arbeiten direkt durchführen, ohne sich auf die jeweiligen Systeme aufschalten zu müssen.</p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>golang</b> | <b>java</b> | <b>html</b> | <b>js</b> | <b>css</b></p>
                                 </details>
                             </div>
@@ -213,9 +245,11 @@
                                 <h3>JEE Architektur für PL/SQL Applikation</h3>
                                 <details>
                                     <summary>
-                                        <p class="event-title">Konzept und PoC (Proof of Concept) einer JEE-Architektur zur sanften Migration einer bestehenden Oracle Forms/Reports Applikation mit einem hohen Maß an PL/SQL-Geschäftslogik in der Datenbank.</p>
+                                        <p class="event-title">Migration von Oracle Forms/Reports</p>
                                     </summary>
-                                    <p class="event-description">Das primäre Ziel ist die Neugestaltung der Benutzeroberfläche. Weiterhin besteht der Wunsch neue oder geänderte Geschäftslogik in die Middleware zu verlagern.</p>
+                                    <hr>
+                                    <p class="event-description">Die Geschäftslogik der bestehenden Applikation befindet sich größenteils als PL/SQL-Code in der Datenbank. Das primäre Ziel ist die Neugestaltung der Benutzeroberfläche. Mittels JDBC wurde die Möglichkeit geschaffen die alten PL/SQL-APIs direkt zu verwenden. Weiterhin wurden Templates zur Migration der Geschäftslogik angeboten.</p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java ee</b> | <b>websockets</b> | <b>json</b> | <b>pl/sql</b></p>
                                 </details>
                             </div>
@@ -226,9 +260,11 @@
                                 <h3>Middleware-Installer und -Cloning</h3>
                                 <details>
                                     <summary>
-                                        <p class="event-title">Bereitstellung von Werkzeugen zur kundenorientierten Installation und Cloning einer komplexen Middleware-Infrastruktur.</p>
+                                        <p class="event-title">Bereitstellung von Werkzeugen zur Installation und Cloning einer SOA-Systemlandschaft.</p>
                                     </summary>
-                                    <p class="event-description">Erstellen und Konfigurieren von DataSources, SecurityProvider, Deployments und weiteren applikationsspezifischen Voraussetzungen.</p>
+                                    <hr>
+                                    <p class="event-description">Erstellen und Konfigurieren von Data-Sources, Security-Provider, Deployments und weiteren applikationsspezifischen Voraussetzungen.</p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>python</b></p>
                                 </details>
                             </div>
@@ -241,7 +277,9 @@
                                     <summary>
                                         <p class="event-title">Entwicklungsumgebung zur Modellierung und Generierung von komplexen Software-Systemen (ERP). </p>
                                     </summary>
+                                    <hr>
                                     <p class="event-description">Bestehend aus einem Basis-Framework, verschiedenen Modell-Editoren und Generatoren zur Erzeugung des Infrastrukturcodes. Die primären Ziele sind die Steigerung der Entwicklungseffizienz und der langjährige Investitionsschutz durch plattformunabhängige Modelle.</p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>eclipse</b> | <b>osgi</b> | <b>xtext</b> | <b>gmf</b> | <b>riena</b> | <b>hibernate</b> | <b>spring</b></p>
                                 </details>
                             </div>
@@ -254,7 +292,9 @@
                                     <summary>
                                         <p class="event-title">Integration eines bestehenden Java Applets in eine Java Fat-Client Anwendung.  </p>
                                     </summary>
+                                    <hr>
                                     <p class="event-description">Simulation der Applet-Umgebung und Bereitstellung separater Kontexte zur Ereignisverarbeitung je Instanz.</p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>applet</b> | <b>swt</b> | <b>swing</b> | <b>awt</b></p>
                                 </details>
                             </div>
@@ -267,7 +307,9 @@
                                     <summary>
                                         <p class="event-title">Interpretierung von Workflowmodellen und Steuerung der angezeigten Views einer Riena-Applikation (RCP). </p>
                                     </summary>
+                                    <hr>
                                     <p class="event-description">Zur Visualisierung des aktuellen Workflows wird die Position des Benutzers in einem Train dargestellt.</p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>eclipse</b> | <b>osgi</b> | <b>riena</b> | <b>emf</b></p>
                                 </details>
                             </div>
@@ -280,7 +322,9 @@
                                     <summary>
                                         <p class="event-title">Entwicklung eines Konzepts zur Rücktransformation plattformspezifischer Modelle zu plattformunabhängigen Modellen am Beispiel einer Geschäftsanwendung.</p>
                                     </summary>
+                                    <hr>
                                     <p class="event-description">Das primäre Ziel dieser Arbeit war die Entwicklung einer Methodologie und prototypische Umsetzung, um Modelle aus Refactoring-Prozessen zu plattformunabhängigen Modellen zu transformieren. Demzufolge wurde eine Umkehrung der bekannten Vorwärtstransformation aus der modellgetriebenen Software-Entwicklung (z. B. MDA) gesucht, die zur Software-Modernisierung eingesetzt werden soll. Im Hauptteil der Arbeit werden bestehende Ansätze evaluiert und ein Konzept abgeleitet, welches im Anschluss mithilfe eines praktischen Beispiels geprüft wird.</p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>eclipse</b> | <b>openArchitectureWare</b></p>
                                 </details>
                             </div>
@@ -293,7 +337,9 @@
                                     <summary>
                                         <p class="event-title">Zugriff auf eine SOA-Infrastruktur über ein mobiles Endgerät. </p>
                                     </summary>
+                                    <hr>
                                     <p class="event-description">Dabei wurden die Verfahren REST und SOAP implementiert. Zusätzlich wurde die Übertragung per HTTPS verschlüsselt.</p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java me</b> | <b>wtk</b> | <b>glassfish</b></p>
                                 </details>
                             </div>
@@ -306,11 +352,13 @@
                                     <summary>
                                         <p class="event-title">Sniffer und Capture Tool zum Aufzeichnen von HTML-, FTP- und Mail-Verkehr von einer Netzwerkschnittstelle (Studienarbeit).</p>
                                     </summary>
+                                    <hr>
                                     <p class="event-description">
                                         <img src="images/nta/nta_main.jpg" class="gallery-image" alt="NTA Main">
                                         <img src="images/nta/starthttp.jpg" class="gallery-image" alt="Start HTTP">
                                         <img src="images/nta/nta_http.jpg" class="gallery-image" alt="NTA HTTP">
                                     </p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>jpcap</b></p>
                                 </details>
                             </div>
@@ -324,7 +372,9 @@
                                     <summary>
                                         <p class="event-title">Entwurf und Implementierung eines grafischen Editors zur Modellierung datenbankgestützter Softwareartefakte.</p>
                                     </summary>
+                                    <hr>
                                     <p class="event-description">Das Ziel war die Eigenentwicklung eines grafischen Entity-Relationship-Modellierungs- und -Generierungswerkzeugs zur Ablösung eines veralteten Editors.</p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>eclipse</b> | <b>gmf</b> | <b>emf</b></p>
                                 </details>
                             </div>
@@ -337,9 +387,11 @@
                                     <summary>
                                         <p class="event-title">Einfacher Dateimanager nach dem Vorbild vom Norton, Total oder Gnome Commander mit dem Versuch die Zeit von Dateioperationen exakt zu bestimmen.</p>
                                     </summary>
-                                   <p class="event-description">
+                                    <hr>
+                                    <p class="event-description">
                                         <img src="images/fe/fileexplorer.jpg" class="gallery-image" alt="File Explorer">
                                     </p>
+                                    <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>eclipse rcp</b></p>
                                 </details>
                             </div>

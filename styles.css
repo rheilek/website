@@ -73,7 +73,7 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: system-ui, sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
     background: var(--bg-primary);
@@ -96,7 +96,7 @@ a:hover {
 }
 
 .container p + p {
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 header {
@@ -197,7 +197,6 @@ main {
 .timeline-container {
     margin-top: 40px;
     position: relative;
-    max-width: 800px;
 }
 
 .timeline-events {
@@ -270,21 +269,34 @@ main {
 .event-content h3 {
     color: var(--text-primary);
     margin-bottom: 10px;
-    font-size: 1rem;
+    font-size: 1.1em;
 }
 
 .event-title {
     font-weight: bold;
+    color: var(--text-secondary);
+    width: 100%;
 }
 
 .event-title:hover{
     text-decoration: underline;
 }
 
+details::before {
+    content: '\21E3';
+    float:right;
+}
+
+details[open]::before {
+    content: '\21E1';
+}
+
+.event-tech b, .monospace {
+    font-family: monospace;
+}
+
 .event-content p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-top: 10px;
+    font-size: 1rem;
 }
 
 .timeline-event summary {
@@ -298,9 +310,30 @@ main {
     display: none;
 }
 
+.event-content .event-description:first {
+    margin-top: 10px;
+    border: 1px solid var(--text-secondary);
+}
+
 .event-description {
-    text-align: justify;
-    line-height: 1.35;
+    line-height: 1.5;
+}
+
+.event-content pre {
+    background: var(--bg-secondary);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--text-secondary);
+    overflow-x: auto;
+    font-family: monospace;
+    font-size: 0.9rem;
+    margin: 10px 0;
+}
+
+hr {
+    border: none;
+    border-top: 1px dotted var(--text-secondary);
+    margin: 15px 0;
 }
 
 .impressum {
