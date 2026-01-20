@@ -328,6 +328,7 @@ details[open]::before {
     font-family: monospace;
     font-size: 0.9rem;
     margin: 10px 0;
+    text-wrap: auto;
 }
 
 hr {
