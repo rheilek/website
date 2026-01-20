@@ -62,7 +62,7 @@
                                     </summary>
                                     <hr>
                                     <p class="event-description">Maßgebend waren die Security- und Key-Lifecycle-Policy des BSI. Diese haben die sichere Zufallszahlengenerierung, diverse TLS-Standards und die sichere Aufbewahrung der Private Keys definiert. Dies hat erfordert, dass ein SNI-based-Routing implementiert werden musste, um die Zertifikate nicht im Cluster verteilen zu müssen (Dateisystem).</p>
-                                    <p class="event-description">Für die sichere Zufallszahlengenerierung wurde der Linux-Kernel evaluiert, genutzt und ggf. mit weiteren Entropiequellen angereichert. Unter Windows wurde mit JNI ein Funktion aus dem Windows-System angebunden. Weiterhin wurde HAProxy als weitere Layer-4 Multiplexer-Komponente eingesetzt und für eine hohe 6-stellige Anzahl an Request konfiguriert und getestet.</p>
+                                    <p class="event-description">Für die sichere Zufallszahlengenerierung wurde der Linux-Kernel evaluiert, genutzt und ggf. mit weiteren Entropiequellen angereichert. Unter Windows wurde mit JNI eine Funktion aus dem Windows-System angebunden. Weiterhin wurde HAProxy als weitere Layer-4 Multiplexer-Komponente eingesetzt und für eine hohe 6-stellige Anzahl an Requests konfiguriert und getestet.</p>
                                     <p class="event-description">Weiterhin hat der BDEW die 24/7-Verfügbarkeit gefordert. Um die betroffenen Komponenten inkrementell aktualisieren zu können, wurde ein Leader-Election Mechanismus im Cluster implementiert. Der Leader entscheidet über das Routing der Requests und welcher Knoten eine Aktualisierung vornehmen kann (Rolling-Upgrade).</p>
                                     <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>golang</b> | <b>java</b> | <b>haproxy</b></p>
@@ -75,7 +75,7 @@
                                 <h3>Middleware-Agent - Passwort-Manager für die Datenbank</h3>
                                 <details>
                                     <summary>
-                                        <p class="event-title">Das Ziel war den bereits existierende Passwort-Manager der Middleware zu nutzen.</p>
+                                        <p class="event-title">Das Ziel war, den bereits existierenden Passwort-Manager der Middleware zu nutzen.</p>
                                     </summary>
                                     <hr>
                                         <p class="event-description">Dazu wurde eine Echtzeitkommunikation zwischen Datenbank und Middleware etabliert. Der Datenbankcode kann über diese Kommunikation direkt sensible Daten aus dem Passwort-Manager der Middleware abfragen, um diese zur Verschlüsselung/Entschlüsselung oder Signierung/Verifizierung zu nutzen. Technisch basiert die Kommunikation auf einer Pipe. Die Datenbank kann über die Pipe direkt mit dem Passwort-Manager kommunizieren. Aus Sicht der Middleware ist es eine langlaufende Datenbankverbindung. Diese wurde mit go-ora Treiber realisiert. Die langlaufenden Verbindungen erfordern ein effizientes Ressourcenmanagement und Timeoutbehandlung. Die Fehler und Probleme im Treiber wurden durch <a href="https://github.com/sijms/go-ora/pulls?q=is%3Apr+is%3Aclosed+author%3Arheilek">Pull-Requests</a> optimiert und wurden dankbar angenommen (siehe <a href="https://github.com/sijms/go-ora" class="monospace">README.MD</a>).</p>
@@ -164,7 +164,7 @@
                         <div class="timeline-event">
                             <div class="event-year"><span class="event-month">Jan.</span><br>2019</div>
                             <div class="event-content">
-                                <h3>Middleware-Agent - Code-Signierung und Linux-Paketverwaltung.</h3>
+                                <h3>Middleware-Agent - Code-Signierung und Linux-Paketverwaltung</h3>
                                 <details>
                                     <summary>
                                         <p class="event-title">CI/CD-Prozess zum Signieren und Erzeugen von RPM-Paketen.</p>
@@ -248,7 +248,7 @@
                                         <p class="event-title">Migration von Oracle Forms/Reports</p>
                                     </summary>
                                     <hr>
-                                    <p class="event-description">Die Geschäftslogik der bestehenden Applikation befindet sich größenteils als PL/SQL-Code in der Datenbank. Das primäre Ziel ist die Neugestaltung der Benutzeroberfläche. Mittels JDBC wurde die Möglichkeit geschaffen die alten PL/SQL-APIs direkt zu verwenden. Weiterhin wurden Templates zur Migration der Geschäftslogik angeboten.</p>
+                                    <p class="event-description">Die Geschäftslogik der bestehenden Applikation befindet sich größtenteils als PL/SQL-Code in der Datenbank. Das primäre Ziel ist die Neugestaltung der Benutzeroberfläche. Mittels JDBC wurde die Möglichkeit geschaffen, die alten PL/SQL-APIs direkt zu verwenden. Weiterhin wurden Templates zur Migration der Geschäftslogik angeboten.</p>
                                     <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java ee</b> | <b>websockets</b> | <b>json</b> | <b>pl/sql</b></p>
                                 </details>
@@ -305,7 +305,7 @@
                                 <h3>Workflow-Engine</h3>
                                 <details>
                                     <summary>
-                                        <p class="event-title">Interpretierung von Workflowmodellen und Steuerung der angezeigten Views einer Riena-Applikation (RCP). </p>
+                                        <p class="event-title">Interpretierung von Workflowmodellen und Steuerung der angezeigten Views einer Riena-Applikation (RCP).</p>
                                     </summary>
                                     <hr>
                                     <p class="event-description">Zur Visualisierung des aktuellen Workflows wird die Position des Benutzers in einem Train dargestellt.</p>
@@ -335,7 +335,7 @@
                                 <h3>MobileSOA</h3>
                                 <details>
                                     <summary>
-                                        <p class="event-title">Zugriff auf eine SOA-Infrastruktur über ein mobiles Endgerät. </p>
+                                        <p class="event-title">Zugriff auf eine SOA-Infrastruktur über ein mobiles Endgerät.</p>
                                     </summary>
                                     <hr>
                                     <p class="event-description">Dabei wurden die Verfahren REST und SOAP implementiert. Zusätzlich wurde die Übertragung per HTTPS verschlüsselt.</p>
@@ -350,7 +350,7 @@
                                 <h3>Network Traffic Analyzer</h3>
                                 <details>
                                     <summary>
-                                        <p class="event-title">Sniffer und Capture Tool zum Aufzeichnen von HTML-, FTP- und Mail-Verkehr von einer Netzwerkschnittstelle (Studienarbeit).</p>
+                                        <p class="event-title">Sniffer- und Capture-Tool zum Aufzeichnen von HTML-, FTP- und Mail-Verkehr von einer Netzwerkschnittstelle (Studienarbeit).</p>
                                     </summary>
                                     <hr>
                                     <p class="event-description">
@@ -373,7 +373,7 @@
                                         <p class="event-title">Entwurf und Implementierung eines grafischen Editors zur Modellierung datenbankgestützter Softwareartefakte.</p>
                                     </summary>
                                     <hr>
-                                    <p class="event-description">Das Ziel war die Eigenentwicklung eines grafischen Entity-Relationship-Modellierungs- und -Generierungswerkzeugs zur Ablösung eines veralteten Editors.</p>
+                                    <p class="event-description">Das Ziel war die Eigenentwicklung eines grafischen Entity-Relationship-Modellierungs- und Generierungswerkzeugs zur Ablösung eines veralteten Editors.</p>
                                     <hr>
                                     <p class="event-tech"><span class="tech-icon">&lt;/&gt;</span> <b>java</b> | <b>eclipse</b> | <b>gmf</b> | <b>emf</b></p>
                                 </details>
